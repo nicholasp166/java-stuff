@@ -10,18 +10,9 @@ public class filescript {
 
     public static void main(String[] args) throws FileNotFoundException{
 
-        try{
-            File fileObj = new File(args[0]);
-            if(fileObj.createNewFile()) {
-                System.out.println("File created.");
-            } else {
-                System.out.println("File exists.");
-                System.exit(0);
-            }
-        } catch (IOException e) {
-            System.out.println("Error occurred.");
-            e.printStackTrace();
-        }
+        createFiles(args[0]);
+        createFiles("script.js");
+        createFiles("style.css");
 
         try{
             FileWriter myWriter = new  FileWriter(args[0]);
@@ -38,6 +29,22 @@ public class filescript {
             System.out.println("Wrote to file.");
         } catch (IOException e) {
             System.out.println("Error.");
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void createFiles(String name){
+        try{
+            File fileObj = new File(name);
+            if(fileObj.createNewFile()) {
+                System.out.println("File created.");
+            } else {
+                System.out.println("File exists.");
+                System.exit(0);
+            }
+        } catch (IOException e) {
+            System.out.println("Error occurred.");
             e.printStackTrace();
         }
 
